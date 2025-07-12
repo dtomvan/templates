@@ -1,9 +1,9 @@
 {
-  description = "Generic devshell flake";
+  description = "Generic devenv flake";
 
   inputs = {
-    # contains a programs.sqlite like a real channel, very useful for NixOS configurations
-    nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz";
+    nixpkgs.url = "github:cachix/devenv-nixpkgs/rolling";
+    devenv.url = "github:cachix/devenv";
     flake-parts.url = "github:hercules-ci/flake-parts";
 
     treefmt-nix = {
@@ -39,16 +39,16 @@
             programs.nixfmt.enable = true;
           };
 
-          devShells.default = pkgs.mkShell {
+          # https://devenv.sh/reference/options/
+          devenv.shells.default = {
             packages = with pkgs; [
-              # inputs.fenix.packages.${system}.minimal.toolchain
+              # bun
             ];
 
-            env = {
-            };
-
-            shellHook = ''
-            '';
+            # languages.rust = {
+            #   enable = true;
+            #   toolchain = inputs.fenix.packages.${system}.minimal;
+            # };
           };
         };
 
