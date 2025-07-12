@@ -31,7 +31,12 @@
         devenv = {
           path = ./devenv;
           description = "devshell through devenv";
-          welcomeText = devShellGreet;
+          welcomeText =
+            devShellGreet
+            + ''
+
+              WARNING: You will probably have to compile some rust for this to work because devenv isn't cached in nixpkgs
+            '';
         };
 
         dev = {
