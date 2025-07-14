@@ -16,7 +16,7 @@
           description = "For starting a nice home-manager config integrated with nixvim";
           welcomeText = ''
             # First steps
-            1. git init; git add **/*.nix; git commit -m 'initial commit'
+            1. git init; git add \*\*/\*.nix; git commit -m 'initial commit'
             2. open `flake.nix` and edit the lines with "CHANGE ME"
             3. nix run .#activate
             4. (optional) uncomment the nixvim stuff in flake.nix and home.nix to start configuring neovim
