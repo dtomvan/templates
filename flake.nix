@@ -31,18 +31,29 @@
         devenv = {
           path = ./devenv;
           description = "devshell through devenv";
-          welcomeText =
-            devShellGreet
-            + ''
+          welcomeText = devShellGreet + ''
 
-              WARNING: You will probably have to compile some rust for this to work because devenv isn't cached in nixpkgs
-            '';
+            WARNING: You will probably have to compile some rust for this to work because devenv isn't cached in nixpkgs
+          '';
         };
 
         dev = {
           path = ./dev;
           description = "devshell without devenv";
           welcomeText = devShellGreet;
+        };
+
+        nixos = {
+          path = ./nixos;
+          description = "template for a dendritic nixos config";
+          welcomeText = ''
+            # First steps
+            1. git init; git add \*\*/\*.nix; git commit -m 'initial commit'
+            2. nixos-generate-config --show-hardware-config > ./modules/_hardware-configuration.nix
+            3. nix run .#write-flake
+
+            You can then start writing modules and including them in modules/nixos.nix.
+          '';
         };
       };
 
