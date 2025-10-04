@@ -43,6 +43,11 @@
           welcomeText = devShellGreet;
         };
 
+        package = {
+          path = ./package;
+          description = "generic package";
+        };
+
         nixos = {
           path = ./nixos;
           description = "template for a dendritic nixos config";
