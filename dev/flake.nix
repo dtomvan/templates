@@ -2,8 +2,7 @@
   description = "Generic devshell flake";
 
   inputs = {
-    # contains a programs.sqlite like a real channel, very useful for NixOS configurations
-    nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     flake-parts.url = "github:hercules-ci/flake-parts";
 
     treefmt-nix = {
@@ -46,8 +45,7 @@
             env = {
             };
 
-            shellHook = ''
-            '';
+            shellHook = '''';
           };
         };
 
