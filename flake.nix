@@ -48,6 +48,17 @@
           description = "generic package";
         };
 
+        autounattend = {
+          path = ./autounattend;
+          description = "template for making an autounattend ISO/USB";
+          welcomeText = ''
+            # First steps
+            1. git init; git add \*\*/\*.nix; git commit -m 'initial commit'
+            2. nix build .#autounattend-iso
+            3. (optional) nix run .#install-demo
+          '';
+        };
+
         nixos = {
           path = ./nixos;
           description = "template for a dendritic nixos config";
