@@ -1,6 +1,6 @@
 {
   outputs =
-    { self }:
+    _inputs:
     let
       devShellGreet = ''
         # First steps
@@ -10,7 +10,9 @@
       '';
     in
     {
-      templates = {
+      templates = rec {
+        default = dev;
+
         hm = {
           path = ./hm;
           description = "For starting a nice home-manager config integrated with nixvim";
@@ -72,7 +74,5 @@
           '';
         };
       };
-
-      defaultTemplate = self.templates.dev;
     };
 }
