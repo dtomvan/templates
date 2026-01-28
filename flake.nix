@@ -73,6 +73,19 @@
             You can then start writing modules and including them in modules/nixos.nix.
           '';
         };
+
+        nixos-autowire = {
+          path = ./nixos-autowire;
+          description = "template for an advanced dendritic nixos+home-manager config with multiple users and hosts";
+          welcomeText = ''
+            # First steps
+            1. git init; git add \*\*/\*.nix; git commit -m 'initial commit'
+            2. nixos-generate-config --show-hardware-config > ./modules/hosts/nixos/_hardware-configuration.nix
+            3. nix run .#write-flake
+
+            You can then start adding hosts in modules/hosts.nix, and users under modules/users.
+          '';
+        };
       };
     };
 }
