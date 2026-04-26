@@ -59,15 +59,7 @@ let
         inherit user;
         inherit (host) hostName system stateVersion;
       }
-    ) hosts)
-    ++ [
-      # for home-manager users not tied to a NixOS host.
-      (makeHome {
-        inherit user;
-        name = user;
-        system = "x86_64-linux";
-      })
-    ];
+    ) hosts);
 in
 {
   imports = [ inputs.home-manager.flakeModules.default ];
