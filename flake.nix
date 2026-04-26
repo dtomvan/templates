@@ -39,6 +39,15 @@
           '';
         };
 
+        rust = {
+          path = ./rust;
+          description = "devshell without devenv for rust";
+          welcomeText = devShellGreet + ''
+
+            NOTE: don't also forget to `nix develop -c cargo init`, of course :)
+          '';
+        };
+
         dev = {
           path = ./dev;
           description = "devshell without devenv";
