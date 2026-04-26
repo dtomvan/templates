@@ -49,7 +49,11 @@ in
           programs.git = lib.mkIf (user != null) {
             enable = true;
             settings = {
-              signing.key = user.gpgPubKey or null;
+              signing = {
+                format = if user.gpgPubKey != null then "openpgp" else null;
+                key = user.gpgPubKey or null;
+              };
+
               user = {
                 name = user.fullName;
                 inherit (user) email;
@@ -65,12 +69,9 @@ in
           user = config.users.${username} or null;
         in
         {
-          programs.jujutsu = lib.mkIf (user != null) {
-            enable = true;
-            settings.user = {
-              inherit (user) email;
-              name = user.fullName;
-            };
+          programs.jujutsu.settings.user = lib.mkIf (user != null) {
+            inherit (user) email;
+            name = user.fullName;
           };
         };
 
