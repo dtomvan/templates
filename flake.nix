@@ -45,11 +45,6 @@
           welcomeText = devShellGreet;
         };
 
-        package = {
-          path = ./package;
-          description = "generic package";
-        };
-
         autounattend = {
           path = ./autounattend;
           description = "template for making an autounattend ISO/USB";
