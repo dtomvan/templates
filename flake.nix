@@ -1,6 +1,6 @@
 {
   outputs =
-    _inputs:
+    _:
     let
       devShellGreet = ''
         # First steps
