@@ -65,16 +65,14 @@
           '';
         };
 
+        # TODO: does this matter a lot still?
         nixos = {
           path = ./nixos;
-          description = "template for a dendritic nixos config";
+          description = "template for a nixos config";
           welcomeText = ''
             # First steps
             1. git init; git add \*\*/\*.nix; git commit -m 'initial commit'
-            2. nixos-generate-config --show-hardware-config > ./modules/_hardware-configuration.nix
-            3. nix run .#write-flake
-
-            You can then start writing modules and including them in modules/nixos.nix.
+            2. nixos-generate-config --show-hardware-config > ./systems/jdoe/hardware-configuration.nix
           '';
         };
 
