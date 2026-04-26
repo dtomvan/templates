@@ -14,6 +14,7 @@ let
     listToAttrs
     nameValuePair
     pipe
+    trivial
     ;
 
   hosts = pipe config.hosts [
@@ -27,6 +28,7 @@ let
       user,
       hostName ? "",
       system,
+      stateVersion ? trivial.release,
     }:
     nameValuePair name (
       withSystem system (
@@ -39,7 +41,7 @@ let
         inputs.home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [
-            (self.lib.mkHomeDefaults user)
+            (self.lib.mkHomeDefaults { inherit user stateVersion; })
             (self.modules.homeManager."${user}@${hostName}" or { })
             (self.modules.homeManager."users-${user}" or { })
           ];
@@ -55,7 +57,7 @@ let
       host:
       makeHome {
         inherit user;
-        inherit (host) hostName system;
+        inherit (host) hostName system stateVersion;
       }
     ) hosts)
     ++ [
