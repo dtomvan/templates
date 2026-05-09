@@ -54,6 +54,12 @@
           welcomeText = devShellGreet;
         };
 
+        mdbook = {
+          path = ./mdbook;
+          description = "mdbook";
+          welcomeText = devShellGreet;
+        };
+
         autounattend = {
           path = ./autounattend;
           description = "template for making an autounattend ISO/USB";
