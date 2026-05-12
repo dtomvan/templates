@@ -44,7 +44,7 @@
 
               src = lib.fileset.toSource {
                 root = ./.;
-                fileset = lib.filesets.unions [
+                fileset = lib.fileset.unions [
                 ];
               };
 
